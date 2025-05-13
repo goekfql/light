@@ -9,7 +9,15 @@ const map = new ol.Map({
         })
     ],
     view: new ol.View({
-        center: ol.proj.fromLonLat([127.0, 37.5]), // 서울 중심 좌표
-        zoom: 7
+        center: ol.proj.fromLonLat([127.7669, 36.2084]), // 대한민국 중심좌표
+        zoom: 7, // 초기 줌 레벨
+        minZoom: 7, // 최소 줌 레벨
+        maxZoom: 12, // 최대 줌 레벨
+        extent: ol.extent.boundingExtent([
+            // 드래그 범위
+            ol.proj.fromLonLat([124.5, 33.0]), // 남서쪽 좌표
+            ol.proj.fromLonLat([131.5, 39.5]), // 북동쪽 좌표
+        ]),
+        smoothExtentConstraint: true, // 부드러운 드래그
     })
 }); 
