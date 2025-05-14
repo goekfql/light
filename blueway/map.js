@@ -1,16 +1,17 @@
 // 위치 좌표 정의
 const locations = [
-    { name: '청계광장 중앙선대위 출정식', coords: [126.977794, 37.569192] },
-    { name: '판교역 유세', coords: [127.111653, 37.394458] },
-    { name: '동탄 센트럴파크 K-반도체 집중유세', coords: [127.063569, 37.205323] },
-    { name: '대전 중구 중앙로 164 유세', coords: [127.427220, 36.329094] },
-    { name: '구미역 광장 유세', coords: [128.330508, 36.129082] },
-    { name: '대구 집중유세', coords: [128.594906, 35.869073] },
-    { name: '경북 포항시 유세', coords: [129.342658, 36.018394] },
-    { name: '롯데백화점 울산점 광장', coords: [129.338581, 35.538366] },
-    { name: '유엔기념공원 참배', coords: [129.092132, 35.124529] },
-    { name: '부산 유세', coords: [129.060897, 35.155113] },
-    { name: '경남 창원시 집중유세', coords: [128.683207, 35.221136] }
+    { name: '청계광장 중앙선대위 출정식', coords: [126.977794, 37.569192], url: 'https://www.youtube.com/live/_tflDyiGMdI?si=Pyo_24RMYOsJ5hcI' },
+    { name: '판교역 유세', coords: [127.111653, 37.394458], url: 'https://www.youtube.com/live/s2Xegvh9uXk?si=C0NUVEq9M884LYrZ' },
+    { name: '동탄 센트럴파크 K-반도체 집중유세', coords: [127.063569, 37.205323], url: 'https://youtube.com/live/Pa5tcE1dRSk?feature=share' },
+    { name: '대전 중구 중앙로 164 유세', coords: [127.427220, 36.329094], url: 'https://youtube.com/live/QqO0B8jI7M0?feature=share' },
+    { name: '구미역 광장 유세', coords: [128.330508, 36.129082], url: 'https://youtube.com/live/PvBnLCxQgmM?feature=share' },
+    { name: '대구 집중유세', coords: [128.594906, 35.869073], url: 'https://youtu.be/Bm5S17einBc' },
+    { name: '경북 포항시 유세', coords: [129.342658, 36.018394], url: 'https://youtube.com/live/UincJGqrWRI?feature=share' },
+    { name: '롯데백화점 울산점 광장', coords: [129.338581, 35.538366], url: 'https://www.youtube.com/live/EX2uFDzXjsA?si=QE9kdLxO9xL4_M3n' },
+    { name: '유엔기념공원 참배', coords: [129.092132, 35.124529], url: 'https://youtube.com/live/WOmt559trBM?feature=share' },
+    { name: '부산 유세', coords: [129.060897, 35.155113], url: 'https://youtube.com/live/yQ07oiqJtng?feature=share' },
+    { name: '경남 창원시 집중유세', coords: [128.683207, 35.221136], url: 'https://youtube.com/live/r58ExqZJLyE?feature=share' },
+    { name: '경남 통영시 유세', coords: [128.425801, 34.844550], url: 'https://youtube.com/live/J_GaknYmoJQ?feature=share' }
 ];
 
 // 두 지점 간의 거리를 계산하는 함수 (Haversine 공식)
@@ -84,7 +85,8 @@ map.addLayer(vectorLayer);
 const points = locations.map(location => {
     return new ol.Feature({
         geometry: new ol.geom.Point(ol.proj.fromLonLat(location.coords)),
-        name: location.name
+        name: location.name,
+        url: location.url
     });
 });
 
@@ -114,7 +116,28 @@ map.on('click', function(evt) {
 
     if (feature && feature.getGeometry() instanceof ol.geom.Point) {
         const coordinates = feature.getGeometry().getCoordinates();
-        popup.getElement().innerHTML = `<div style="background: white; padding: 5px; border-radius: 5px;">${feature.get('name')}</div>`;
+        const name = feature.get('name');
+        const url = feature.get('url');
+        
+        popup.getElement().innerHTML = `
+            <div style="
+                background: white;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                text-align: center;
+            ">
+                <div style="margin-bottom: 8px;">${name}</div>
+                <a href="${url}" target="_blank" style="
+                    display: inline-block;
+                    background: #0066cc;
+                    color: white;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    text-decoration: none;
+                    font-size: 14px;
+                ">델리민주 라이브 바로가기</a>
+            </div>`;
         popup.setPosition(coordinates);
     } else {
         popup.setPosition(undefined);
