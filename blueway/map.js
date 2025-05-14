@@ -64,10 +64,11 @@ const map = new ol.Map({
     })
 });
 
-// === 모바일 지도 잠금/해제 기능 추가 ===
+// === 모바일 지도 잠금/해제 기능 더블탭으로 변경 ===
 document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('map-lock-overlay');
     let isLocked = true;
+    let lastTap = 0;
     function isMobile() {
         return window.innerWidth < 768;
     }
@@ -81,16 +82,27 @@ document.addEventListener('DOMContentLoaded', function() {
         isLocked = false;
         map.getInteractions().forEach(i => i.setActive(true));
     }
+    function isDoubleTap() {
+        const now = Date.now();
+        const delta = now - lastTap;
+        lastTap = now;
+        return delta < 400 && delta > 0;
+    }
     if (isMobile() && overlay) {
         lockMap();
-        overlay.addEventListener('touchstart', function(e) {
-            unlockMap();
+        overlay.addEventListener('touchend', function(e) {
+            if (isDoubleTap()) {
+                unlockMap();
+            }
         });
         map.on('singleclick', function(evt) {
+            // 더블탭 감지용
             if (!isLocked) {
-                const feature = map.forEachFeatureAtPixel(evt.pixel, f => f);
-                if (!feature) {
-                    lockMap();
+                if (isDoubleTap()) {
+                    const feature = map.forEachFeatureAtPixel(evt.pixel, f => f);
+                    if (!feature) {
+                        lockMap();
+                    }
                 }
             }
         });
