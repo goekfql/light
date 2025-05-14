@@ -64,6 +64,39 @@ const map = new ol.Map({
     })
 });
 
+// === 모바일 지도 잠금/해제 기능 추가 ===
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('map-lock-overlay');
+    let isLocked = true;
+    function isMobile() {
+        return window.innerWidth < 768;
+    }
+    function lockMap() {
+        if (overlay) overlay.style.display = 'flex';
+        isLocked = true;
+        map.getInteractions().forEach(i => i.setActive(false));
+    }
+    function unlockMap() {
+        if (overlay) overlay.style.display = 'none';
+        isLocked = false;
+        map.getInteractions().forEach(i => i.setActive(true));
+    }
+    if (isMobile() && overlay) {
+        lockMap();
+        overlay.addEventListener('touchstart', function(e) {
+            unlockMap();
+        });
+        map.on('singleclick', function(evt) {
+            if (!isLocked) {
+                const feature = map.forEachFeatureAtPixel(evt.pixel, f => f);
+                if (!feature) {
+                    lockMap();
+                }
+            }
+        });
+    }
+});
+
 // 포인트와 라인을 그릴 벡터 레이어 생성
 const vectorSource = new ol.source.Vector();
 const vectorLayer = new ol.layer.Vector({
