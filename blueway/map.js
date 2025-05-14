@@ -11,7 +11,8 @@ const locations = [
     { name: '유엔기념공원 참배', coords: [129.092132, 35.124529], url: 'https://youtube.com/live/WOmt559trBM?feature=share' },
     { name: '부산 유세', coords: [129.060897, 35.155113], url: 'https://youtube.com/live/yQ07oiqJtng?feature=share' },
     { name: '경남 창원시 집중유세', coords: [128.683207, 35.221136], url: 'https://youtube.com/live/r58ExqZJLyE?feature=share' },
-    { name: '경남 통영시 유세', coords: [128.425801, 34.844550], url: 'https://youtube.com/live/J_GaknYmoJQ?feature=share' }
+    { name: '경남 통영시 유세', coords: [128.425801, 34.844550], url: 'https://youtube.com/live/J_GaknYmoJQ?feature=share' },
+    { name: '경남 거시 유세', coords: [128.624771, 34.889280], url: 'https://youtube.com/live/-wulh-KRWWM?feature=share' }
 ];
 
 // 두 지점 간의 거리를 계산하는 함수 (Haversine 공식)
