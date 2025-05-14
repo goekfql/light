@@ -2,62 +2,53 @@
 const scheduleData = [
     {
         id: 1,
-        time: '10:30',
-        title: "유엔기념공원 참배",
-        location: '부산 남구 유엔평화로 93',
-        isLive: false,
-        prepTime: '10:00',
-        description: '풀단취재'
+        time: '10:20',
+        title: "< 'K-이니셔TV' 케미폭발 '동서화합' 화개장터 라이브>",
+        location: '',
+        isLive: true,
+        prepTime: '',
+        description: '유튜브 라이브, 현장풀 취재'
     },
     {
         id: 2,
-        time: '12:00',
-        title: "부산 유세",
-        location: '서면 쥬디스태화 옆(부산 부산진구 신천대로50번길 79)',
+        time: '11:50',
+        title: '전남 광양시 유세',
+        location: '전남 드래곤즈구장 축구장 북문(전남 광양시 백운로 1641)',
         isLive: true,
-        prepTime: '11:10'
+        prepTime: '12:30',
+        description: '후보유세'
     },
     {
         id: 3,
-        time: '12:40',
-        title: "유튜브 라이브 <K-이니셔티비 : 북극항로 대담>",
-        location: '',
-        isLive: true
+        time: '13:20',
+        title: '전남 여수시 집중유세',
+        location: '이순신 광장(전남 여수시 선어시장길 6)',
+        isLive: true,
+        prepTime: '14:00',
+        description: '후보유세'
     },
     {
         id: 4,
-        time: '14:30',
-        title: "경남 창원시 집중유세",
-        location: '상남분수광장 (경남 창원시 성산구 마디미로38번길 11)',
+        time: '15:10',
+        title: '전남 순천시 유세',
+        location: '연향동 패션의 거리(전남 순천시 연향번영길 149)',
         isLive: true,
-        prepTime: '13:50'
+        prepTime: '15:50',
+        description: '후보유세'
     },
     {
         id: 5,
-        time: '17:00',
-        title: "경남 통영시 유세",
-        location: '강구안 문화마당(경남 통영시 통영해안로 325)',
+        time: '18:20',
+        title: '전남 목포시 유세',
+        location: '평화광장 원형상가 앞(전남 목포시 원형로 19)',
         isLive: true,
-        prepTime: '16:20'
-    },
-    {
-        id: 6,
-        time: '18:30',
-        title: "경남 거제시 유세",
-        location: '엠파크 차없는 거리(경남 거제시 고현로11길 20)',
-        isLive: true,
-        prepTime: '17:50'
+        prepTime: '19:00',
+        description: '후보유세'
     }
 ];
 
-// 날짜 포맷팅 함수
-function formatDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}년 ${month}월 ${day}일`;
-}
+// 날짜를 직접 입력하는 상수
+const scheduleDate = '2025년 5월 15일'; // 예시 날짜, 필요에 따라 수정
 
 // 일정 HTML 생성 함수
 function createScheduleHTML() {
@@ -77,7 +68,7 @@ function createScheduleHTML() {
             <div class="bg-white p-4 flex items-center justify-between border-b">
                 <div class="flex items-center">
                     <i data-lucide="calendar" class="h-5 w-5 text-indigo-500 mr-2"></i>
-                    <span class="font-medium">${formatDate()}</span>
+                    <span class="font-medium">${scheduleDate}</span>
                 </div>
             </div>
             
