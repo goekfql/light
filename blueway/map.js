@@ -1,10 +1,52 @@
 // 위치 좌표 정의
 const locations = [
-    { name: '광화문 광장', coords: [126.976882, 37.575766] },
-    { name: '판교', coords: [127.112225, 37.394776] },
-    { name: '동탄', coords: [127.115306, 37.200707] },
-    { name: '대전 중구 중앙로', coords: [127.421479, 36.327807] }
+    { name: '청계광장 중앙선대위 출정식', coords: [126.977794, 37.569192] },
+    { name: '판교역 유세', coords: [127.111653, 37.394458] },
+    { name: '동탄 센트럴파크 K-반도체 집중유세', coords: [127.063569, 37.205323] },
+    { name: '대전 중구 중앙로 164 유세', coords: [127.427220, 36.329094] },
+    { name: '구미역 광장 유세', coords: [128.330508, 36.129082] },
+    { name: '대구 집중유세', coords: [128.594906, 35.869073] },
+    { name: '경북 포항시 유세', coords: [129.342658, 36.018394] },
+    { name: '롯데백화점 울산점 광장', coords: [129.338581, 35.538366] },
+    { name: '유엔기념공원 참배', coords: [129.092132, 35.124529] },
+    { name: '부산 유세', coords: [129.060897, 35.155113] },
+    { name: '경남 창원시 집중유세', coords: [128.683207, 35.221136] }
 ];
+
+// 두 지점 간의 거리를 계산하는 함수 (Haversine 공식)
+function calculateDistance(coord1, coord2) {
+    const R = 6371; // 지구의 반경 (km)
+    const lat1 = coord1[1] * Math.PI / 180;
+    const lat2 = coord2[1] * Math.PI / 180;
+    const dLat = (coord2[1] - coord1[1]) * Math.PI / 180;
+    const dLon = (coord2[0] - coord1[0]) * Math.PI / 180;
+
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1) * Math.cos(lat2) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
+}
+
+// 총 이동 거리 계산
+const totalDistance = locations.reduce((total, location, index) => {
+    if (index === 0) return 0;
+    return total + calculateDistance(locations[index-1].coords, location.coords);
+}, 0);
+
+// 거리 표시 요소 생성
+const distanceElement = document.createElement('div');
+distanceElement.innerHTML = `<div style="
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: 'Noto Sans KR', sans-serif;
+    z-index: 1000;
+">총 이동 거리: ${Math.round(totalDistance)}km</div>`;
 
 // 지도 생성
 const map = new ol.Map({
@@ -77,4 +119,7 @@ map.on('click', function(evt) {
     } else {
         popup.setPosition(undefined);
     }
-}); 
+});
+
+// 지도 생성 후에 거리 표시 요소 추가
+map.getTargetElement().appendChild(distanceElement); 
