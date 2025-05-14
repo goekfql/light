@@ -64,11 +64,12 @@ const map = new ol.Map({
     })
 });
 
-// === 모바일 지도 잠금/해제 기능 더블탭으로 변경 ===
+// === 모바일 지도 잠금/해제 기능 더블탭으로 개선 ===
 document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('map-lock-overlay');
     let isLocked = true;
-    let lastTap = 0;
+    let lastTapTimeOverlay = 0;
+    let lastTapTimeMap = 0;
     function isMobile() {
         return window.innerWidth < 768;
     }
@@ -82,27 +83,28 @@ document.addEventListener('DOMContentLoaded', function() {
         isLocked = false;
         map.getInteractions().forEach(i => i.setActive(true));
     }
-    function isDoubleTap() {
-        const now = Date.now();
-        const delta = now - lastTap;
-        lastTap = now;
-        return delta < 400 && delta > 0;
-    }
     if (isMobile() && overlay) {
         lockMap();
         overlay.addEventListener('touchend', function(e) {
-            if (isDoubleTap()) {
+            const now = Date.now();
+            if (now - lastTapTimeOverlay < 400) {
                 unlockMap();
             }
+            lastTapTimeOverlay = now;
         });
-        map.on('singleclick', function(evt) {
-            // 더블탭 감지용
+        map.getViewport().addEventListener('touchend', function(e) {
             if (!isLocked) {
-                if (isDoubleTap()) {
-                    const feature = map.forEachFeatureAtPixel(evt.pixel, f => f);
-                    if (!feature) {
+                // 빈 영역만 처리
+                const touch = e.changedTouches[0];
+                const rect = map.getTargetElement().getBoundingClientRect();
+                const pixel = [touch.clientX - rect.left, touch.clientY - rect.top];
+                const feature = map.forEachFeatureAtPixel(pixel, f => f);
+                if (!feature) {
+                    const now = Date.now();
+                    if (now - lastTapTimeMap < 400) {
                         lockMap();
                     }
+                    lastTapTimeMap = now;
                 }
             }
         });
