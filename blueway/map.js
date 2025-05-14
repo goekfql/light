@@ -38,8 +38,8 @@ const totalDistance = locations.reduce((total, location, index) => {
 const distanceElement = document.createElement('div');
 distanceElement.innerHTML = `<div style="
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 120px;
+    right: 30px;
     background: white;
     padding: 10px;
     border-radius: 5px;
