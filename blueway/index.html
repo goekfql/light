@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -64,6 +64,9 @@
         <div class="map-container md:w-3/5 w-full relative">
             <div class="map-title">지금은 이재명! 후보 유세 지도</div>
             <div id="map"></div>
+            <div id="map-lock-overlay" class="absolute inset-0 bg-white bg-opacity-60 flex items-center justify-center z-50 md:hidden" style="touch-action: none; cursor: pointer;">
+                <span class="text-blue-700 font-bold text-lg">지도를 조작하려면 터치하세요</span>
+            </div>
         </div>
         <div id="schedule-container" class="md:w-2/5 w-full mt-4 mb-8 md:px-4"></div>
     </div>
