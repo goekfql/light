@@ -64,53 +64,6 @@ const map = new ol.Map({
     })
 });
 
-// === 모바일 지도 잠금/해제 기능 더블탭으로 개선 ===
-document.addEventListener('DOMContentLoaded', function() {
-    const overlay = document.getElementById('map-lock-overlay');
-    let isLocked = true;
-    let lastTapTimeOverlay = 0;
-    let lastTapTimeMap = 0;
-    function isMobile() {
-        return window.innerWidth < 768;
-    }
-    function lockMap() {
-        if (overlay) overlay.style.display = 'flex';
-        isLocked = true;
-        map.getInteractions().forEach(i => i.setActive(false));
-    }
-    function unlockMap() {
-        if (overlay) overlay.style.display = 'none';
-        isLocked = false;
-        map.getInteractions().forEach(i => i.setActive(true));
-    }
-    if (isMobile() && overlay) {
-        lockMap();
-        overlay.addEventListener('touchend', function(e) {
-            const now = Date.now();
-            if (now - lastTapTimeOverlay < 400) {
-                unlockMap();
-            }
-            lastTapTimeOverlay = now;
-        });
-        map.getViewport().addEventListener('touchend', function(e) {
-            if (!isLocked) {
-                // 빈 영역만 처리
-                const touch = e.changedTouches[0];
-                const rect = map.getTargetElement().getBoundingClientRect();
-                const pixel = [touch.clientX - rect.left, touch.clientY - rect.top];
-                const feature = map.forEachFeatureAtPixel(pixel, f => f);
-                if (!feature) {
-                    const now = Date.now();
-                    if (now - lastTapTimeMap < 400) {
-                        lockMap();
-                    }
-                    lastTapTimeMap = now;
-                }
-            }
-        });
-    }
-});
-
 // 포인트와 라인을 그릴 벡터 레이어 생성
 const vectorSource = new ol.source.Vector();
 const vectorLayer = new ol.layer.Vector({
