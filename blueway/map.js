@@ -15,7 +15,9 @@ const locations = [
     { name: '경남 거제시 유세', coords: [128.624771, 34.889280], url: 'https://youtube.com/live/-wulh-KRWWM?feature=share' },
     { name: '동서화합 화개장터', coords: [127.624240, 35.188045], url: 'https://www.youtube.com/live/7ORxT6JIAGk?si=TFHAJvooHmWfSlib' },
     { name: '전남 광양시 유세', coords: [127.726960, 34.932854], url: 'https://www.youtube.com/live/O0iuNaUoiBc?si=TU1aMuNha1OM1eZp' },
-    { name: '전남 여수시 집중 유세', coords: [127.735500, 34.739014], url: 'https://www.youtube.com/live/89XCB9ysCqc?si=YHZGxwLMwn7tzBhq' }
+    { name: '전남 여수시 집중 유세', coords: [127.735500, 34.739014], url: 'https://www.youtube.com/live/89XCB9ysCqc?si=YHZGxwLMwn7tzBhq' },
+    { name: '전남 순천시 유세', coords: [127.517407, 34.952561], url: 'https://youtube.com/live/RumVqjWpTY8?feature=share' },
+    { name: '전남 목포시 유세', coords: [126.431737, 34.797792], url: 'https://www.youtube.com/live/SNMY-7fIvsI?si=iCnCAzMz9jkqB7_M' }
 ];
 
 // 두 지점 간의 거리를 계산하는 함수 (Haversine 공식)
