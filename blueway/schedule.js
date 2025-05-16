@@ -48,7 +48,7 @@ const scheduleData = [
 ];
 
 // 날짜를 직접 입력하는 상수
-const scheduleDate = '2025년 5월 15일'; // 예시 날짜, 필요에 따라 수정
+const scheduleDate = '2025년 5월 16일'; // 예시 날짜, 필요에 따라 수정
 
 // 일정 HTML 생성 함수
 function createScheduleHTML() {
