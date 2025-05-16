@@ -1,4 +1,3 @@
-
 // 지도 생성
 const map = new ol.Map({
     target: 'map',
@@ -34,7 +33,7 @@ function addMarker(lon, lat, imageUrl, link, title) {
         image: new ol.style.Icon({
             src: imageUrl,
             scale: 0.2,
-            anchor: [0.5, 1]
+            anchor: [0.5, 1]/
         })
     });
 
@@ -79,6 +78,3 @@ regions.forEach(region => {
         region.name
     );
 });
-
-// 예시: 마커 추가
-// addMarker(127.0, 37.5, 'marker-image.png', 'https://example.com', '마커 제목'); 
