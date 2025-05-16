@@ -56,14 +56,6 @@ function createScheduleHTML() {
     
     container.innerHTML = `
         <div class="flex flex-col h-full bg-gray-50 text-gray-800 font-sans">
-            <!-- Header -->
-            <div class="bg-indigo-600 text-white p-4 rounded-t-xl">
-                <div class="mb-2">
-                    <h1 class="text-lg font-bold">오늘의 일정</h1>
-                </div>
-                <p class="text-sm text-indigo-100">이재명 대통령선거후보</p>
-            </div>
-            
             <!-- Date Display -->
             <div class="bg-white p-4 flex items-center justify-between border-b">
                 <div class="flex items-center">
