@@ -13,6 +13,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
         body {
             min-height: 100vh;
@@ -50,25 +51,83 @@
         #schedule-container {
             height: 100vh;
             overflow-y: auto;
+            display: none;
         }
-        @media (max-width: 767px) {
+        .toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #1a56db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .toggle-button:hover {
+            transform: scale(1.05);
+        }
+        .toggle-button i {
+            color: white;
+            font-size: 24px;
+        }
+        @media (min-width: 768px) {
+            .toggle-button {
+                display: none;
+            }
             #schedule-container {
-                height: auto;
-                overflow-y: visible;
+                display: block;
             }
         }
     </style>
 </head>
 <body>
     <div class="flex flex-col md:flex-row w-full max-w-7xl mx-auto">
-        <div class="map-container md:w-3/5 w-full relative">
+        <div class="map-container md:w-3/5 w-full relative" id="map-view">
             <div class="map-title">지금은 이재명! 후보 유세 지도</div>
             <div id="map"></div>
         </div>
-        <div id="schedule-container" class="md:w-2/5 w-full mt-4 mb-8 md:px-4"></div>
+        <div id="schedule-container" class="md:w-2/5 w-full px-4"></div>
     </div>
+    <div class="toggle-button" id="toggle-view">
+        <i data-lucide="calendar"></i>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
     <script src="map.js"></script>
     <script src="schedule.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Toggle view functionality
+        const mapView = document.getElementById('map-view');
+        const scheduleContainer = document.getElementById('schedule-container');
+        const toggleButton = document.getElementById('toggle-view');
+        const toggleIcon = toggleButton.querySelector('i');
+
+        let showingMap = true;
+
+        toggleButton.addEventListener('click', () => {
+            showingMap = !showingMap;
+            
+            if (showingMap) {
+                mapView.style.display = 'block';
+                scheduleContainer.style.display = 'none';
+                toggleIcon.setAttribute('data-lucide', 'calendar');
+            } else {
+                mapView.style.display = 'none';
+                scheduleContainer.style.display = 'block';
+                toggleIcon.setAttribute('data-lucide', 'map');
+            }
+            
+            lucide.createIcons();
+        });
+    </script>
 </body>
 </html> 
