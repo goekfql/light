@@ -20,7 +20,7 @@ const locations = [
     { name: '전남 목포시 유세', coords: [126.431737, 34.797792], url: 'https://www.youtube.com/live/SNMY-7fIvsI?si=iCnCAzMz9jkqB7_M' },
     { name: '전북 익산시 유세', coords: [126.947027, 35.940034], url: 'https://www.youtube.com/live/qiNFWfh7-yM?si=Y1VgFhnAmAPDbCi9' },
     { name: '전북 군산시 유세', coords: [126.710933, 35.986579], url: 'https://youtube.com/live/g5wr09gUM2U?feature=share' },
-    
+    { name: '전북 전주시 집중유세', coords: [127.126901, 35.843543], url: 'https://www.youtube.com/live/DzG2WpXADlg?si=6ZpJHfvSuI839lz6' }
 ];
 
 // 두 지점 간의 거리를 계산하는 함수 (Haversine 공식)
