@@ -3,52 +3,61 @@ const scheduleData = [
     {
         id: 1,
         time: '10:20',
-        title: "< 'K-이니셔TV' 케미폭발 '동서화합' 화개장터 라이브>",
-        location: '',
+        title: '전북 익산시 유세',
+        location: '익산역 동부광장 (전북 익산시 중앙동1가 2-1)',
         isLive: true,
-        prepTime: '',
-        description: '유튜브 라이브, 현장풀 취재'
+        prepTime: '11:00',
+        description: '후보유세'
     },
     {
         id: 2,
-        time: '11:50',
-        title: '전남 광양시 유세',
-        location: '전남 드래곤즈구장 축구장 북문(전남 광양시 백운로 1641)',
+        time: '12:20',
+        title: '전북 군산시 유세',
+        location: '이성당 앞 구시청광장 (전북 군산시 중앙로 177)',
         isLive: true,
-        prepTime: '12:30',
+        prepTime: '13:00',
         description: '후보유세'
     },
     {
         id: 3,
-        time: '13:20',
-        title: '전남 여수시 집중유세',
-        location: '이순신 광장(전남 여수시 선어시장길 6)',
+        time: '14:40',
+        title: "K-컬처 '전통의 소리를 잇다- 청년 국악인과의 간담회'",
+        location: '',
         isLive: true,
-        prepTime: '14:00',
-        description: '후보유세'
+        prepTime: '',
+        description: '풀단취재'
     },
     {
         id: 4,
-        time: '15:10',
-        title: '전남 순천시 유세',
-        location: '연향동 패션의 거리(전남 순천시 연향번영길 149)',
+        time: '15:20',
+        title: '전북 전주시 집중유세',
+        location: '전북대 후문 (전북 전주시 덕진구 권삼득로 315)',
         isLive: true,
-        prepTime: '15:50',
+        prepTime: '16:00',
         description: '후보유세'
     },
     {
-        id: 5,
-        time: '18:20',
-        title: '전남 목포시 유세',
-        location: '평화광장 원형상가 앞(전남 목포시 원형로 19)',
+        id: '4-1',
+        time: '16:30',
+        title: '이세종열사 추모비 참배',
+        location: '',
         isLive: true,
-        prepTime: '19:00',
+        prepTime: '',
+        description: '풀단 취재'
+    },
+    {
+        id: 5,
+        time: '17:50',
+        title: '전북 정읍시 유세',
+        location: '정읍역 광장 (전북 정읍시 연지동 343-265)',
+        isLive: true,
+        prepTime: '18:30',
         description: '후보유세'
     }
 ];
 
 // 날짜를 직접 입력하는 상수
-const scheduleDate = '2025년 5월 16일'; // 예시 날짜, 필요에 따라 수정
+const scheduleDate = '2024년 1월 16일';
 
 // 일정 HTML 생성 함수
 function createScheduleHTML() {
@@ -70,7 +79,7 @@ function createScheduleHTML() {
                     <div class="bg-white rounded-lg mb-3 overflow-hidden shadow-sm border border-gray-100">
                         <div class="p-4 flex items-start">
                             <div class="mr-3 flex-shrink-0">
-                                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600">
+                                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-medium">
                                     ${event.id}
                                 </div>
                             </div>
@@ -78,6 +87,9 @@ function createScheduleHTML() {
                                 <div class="flex items-center mb-1">
                                     <i data-lucide="clock" class="h-4 w-4 text-indigo-500 mr-1"></i>
                                     <span class="text-sm text-indigo-700 font-medium">${event.time}</span>
+                                    ${event.prepTime ? `
+                                        <span class="ml-2 text-sm text-gray-500">(후보유세 ${event.prepTime})</span>
+                                    ` : ''}
                                     ${event.isLive ? `
                                         <span class="ml-2 bg-red-100 text-red-700 text-xs px-2 py-0.5 rounded-full">L</span>
                                     ` : ''}
@@ -88,6 +100,9 @@ function createScheduleHTML() {
                                         <i data-lucide="map-pin" class="h-4 w-4 mr-1 mt-0.5 flex-shrink-0"></i>
                                         <span>${event.location}</span>
                                     </div>
+                                ` : ''}
+                                ${event.description ? `
+                                    <div class="mt-1 text-sm text-gray-500">${event.description}</div>
                                 ` : ''}
                             </div>
                         </div>
