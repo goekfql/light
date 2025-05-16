@@ -33,7 +33,7 @@ function addMarker(lon, lat, imageUrl, link, title) {
         image: new ol.style.Icon({
             src: imageUrl,
             scale: 0.2,
-            anchor: [0.5, 1]/
+            anchor: [0.5, 1]
         })
     });
 
