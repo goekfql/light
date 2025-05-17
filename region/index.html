@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenLayers Map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>이재명 후보 지역공약</header>
+    <div class="container">
+        <div class="flip-container">
+            <div class="flipper">
+                <div class="front">
+                    <div id="map"></div>
+                </div>
+                <div class="back">
+                    <div id="image-container">
+                        <div id="guide-message">지역을 클릭해주세요</div>
+                        <img id="region-image" src="" alt="" style="display: none;" />
+                        <button class="close-button" id="close-btn">&#10005;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+    <script src="main.js"></script>
+</body>
+</html> 
