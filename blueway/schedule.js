@@ -3,61 +3,43 @@ const scheduleData = [
     {
         id: 1,
         time: '10:20',
-        title: '전북 익산시 유세',
-        location: '익산역 동부광장 (전북 익산시 중앙동1가 2-1)',
+        title: '전남 나주시 유세',
+        location: '금성관 앞 (전남 나주시 금성관길 8)',
         isLive: true,
         prepTime: '11:00',
         description: '후보유세'
     },
     {
         id: 2,
-        time: '12:20',
-        title: '전북 군산시 유세',
-        location: '이성당 앞 구시청광장 (전북 군산시 중앙로 177)',
+        time: '13:50',
+        title: '광주광역시 집중유세',
+        location: '김대중컨벤션센터 광장 (광주 서구 상무누리로 30)',
         isLive: true,
-        prepTime: '13:00',
+        prepTime: '14:30',
         description: '후보유세'
     },
     {
         id: 3,
-        time: '14:40',
-        title: "K-컬처 '전통의 소리를 잇다- 청년 국악인과의 간담회'",
-        location: '',
+        time: '16:00',
+        title: "K-콘텐츠–e스포츠 LEVEL UP!",
+        location: '광주',
         isLive: true,
         prepTime: '',
-        description: '풀단취재'
+        description: '풀단'
     },
     {
         id: 4,
-        time: '15:20',
-        title: '전북 전주시 집중유세',
-        location: '전북대 후문 (전북 전주시 덕진구 권삼득로 315)',
-        isLive: true,
-        prepTime: '16:00',
-        description: '후보유세'
-    },
-    {
-        id: '4-1',
-        time: '16:30',
-        title: '이세종열사 추모비 참배',
-        location: '',
+        time: '18:00',
+        title: '광주 5.18 전야제',
+        location: '금남로4가역 교차로 본무대 앞 (광주 동구 금남로4가)',
         isLive: true,
         prepTime: '',
-        description: '풀단 취재'
-    },
-    {
-        id: 5,
-        time: '17:50',
-        title: '전북 정읍시 유세',
-        location: '정읍역 광장 (전북 정읍시 연지동 343-265)',
-        isLive: true,
-        prepTime: '18:30',
-        description: '후보유세'
+        description: ''
     }
 ];
 
 // 날짜를 직접 입력하는 상수
-const scheduleDate = '2025년 5월 16일';
+const scheduleDate = '2025년 5월 17일';
 
 // 일정 HTML 생성 함수
 function createScheduleHTML() {
