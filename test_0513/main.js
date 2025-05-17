@@ -131,7 +131,7 @@ const heatmapLayer = new ol.layer.Heatmap({
     features: features // 모든 feature를 한 번에 추가
   }),
   blur: 20,
-  radius: 20,
+  radius: 30,
   weight: function(feature) {
     return feature.get('weight');
   },
