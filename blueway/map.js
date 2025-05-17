@@ -22,7 +22,8 @@ const locations = [
     { name: '전북 군산시 유세', coords: [126.710933, 35.986579], url: 'https://youtube.com/live/g5wr09gUM2U?feature=share' },
     { name: '전북 전주시 집중유세', coords: [127.126901, 35.843543], url: 'https://www.youtube.com/live/DzG2WpXADlg?si=6ZpJHfvSuI839lz6' },
     { name: '전남 나주시 유세', coords: [126.716732, 35.033350], url: 'https://youtube.com/live/ow_tA1qQQCQ?feature=share' },
-    { name: '광주광역시 집중유세', coords: [126.840055, 35.146883], url: 'https://www.youtube.com/live/fv9V34Z3058?si=MkbwhoFCSMWRPNqm' }
+    { name: '광주광역시 집중유세', coords: [126.840055, 35.146883], url: 'https://www.youtube.com/live/fv9V34Z3058?si=MkbwhoFCSMWRPNqm' },
+    { name: 'K-콘텐츠–e스포츠 LEVEL UP', coords: [126.932098, 35.140817], url: 'https://www.youtube.com/live/2hMSrzDBCkY?si=9JBzie9oRV1vf_FG' }
 ];
 
 // 두 지점 간의 거리를 계산하는 함수 (Haversine 공식)
